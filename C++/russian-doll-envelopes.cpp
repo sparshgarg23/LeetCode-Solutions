@@ -3,15 +3,15 @@
 
 class Solution {
 public:
-    int maxEnvelopes(vector<pair<int, int>>& envelopes) {
+    int maxEnvelopes(vector<vector<int>>& envelopes) {
         vector<int> result;
 
         sort(envelopes.begin(), envelopes.end(),  // O(nlogn)
-            [](const pair<int, int>& a, const pair<int, int>& b) {
-                if (a.first == b.first) {
-                    return a.second > b.second;
+            [](const int& a, const int& b) {
+                if (a[0] == b[0]) {
+                    return a[1]> b[1];
                 }
-                return a.first < b.first;
+                return a[0] < b[0];
             });
         for (const auto& envelope : envelopes) {
             const auto target = envelope.second;
